@@ -1,0 +1,21 @@
+{
+    "name": "enoactic/laravel-datatables",
+    "description": "",
+    "type": "library",
+    "license": "",
+    "authors": [
+        {
+            "name": "Boonyaphat Intasin",
+            "email": "aosmosiss-ze@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "LaravelDatatables\\": "src/LaravelDatatables"
+        }
+    },
+    "require": {
+        "php": ">=7.1.33"
+    }
+}
