@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class DatatablesMSSQL
 {
-    public $connection = "mssql";
+    public $connection = "sqlsrv";
 
     public function raw($request, $table, $filters, $joins = [], $defaultWhere = null, $defaultGroup = null, $debug = false)
     {
