@@ -179,6 +179,14 @@ class DatatablesMSSQL
                 $orderStatement = $filterKey." ".$request->input('order.0.dir');
         }
         if($orderStatement != "") $orderStatement = " ORDER BY ".$orderStatement;
+        if($orderStatement == "")
+        {
+            foreach($filters as $filterKey => $filterValue)
+            {
+                $orderStatement = " ORDER BY ".$filterKey." ASC";
+                break;
+            }
+        };
         // LIMIT
         $limit = "";
         if($request->input('start') != "" && $request->input('length') != ""){
