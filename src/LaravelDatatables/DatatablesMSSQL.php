@@ -67,7 +67,7 @@ class DatatablesMSSQL
                 if($method == "LIKE"){
                     $whereStatement .= ($whereStatement == "") ? " " . $field . " LIKE '%" . $value . "%'" : " AND " . $field . " LIKE '%" . $value . "%'";
                 }else if($method == "EQUAL"){
-                    $whereStatement .= ($whereStatement == "") ? " " . $field . " = '" . $value . "%" : " AND " . $field . " = '" . $value . "'";
+                    $whereStatement .= ($whereStatement == "") ? " " . $field . " = '" . $value . "'" : " AND " . $field . " = '" . $value . "'";
                 }else if($method == "DATE"){
                     $date = null;
                     $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
@@ -101,10 +101,10 @@ class DatatablesMSSQL
                             }
                         }
                     }
-                    if($dateStart != null && $dateEnd != null){
-                        $whereStatement .= ($whereStatement == "") ? " CONVERT(VARCHAR(20), " . $field . ", 126) BETWEEN '" . $dateStart . "' AND '" . $dateEnd . "'" : " AND CONVERT(VARCHAR(20), " . $field . ", 126) BETWEEN '" . $dateStart . "' AND '" . $dateEnd . "'";
+                    if($dateStart != null && $dateEnd != null && $dateStart != $dateEnd){
+                        $whereStatement .= ($whereStatement == "") ? " CONVERT(VARCHAR(20), " . $field . ", 23) BETWEEN '" . $dateStart . "' AND '" . $dateEnd . "'" : " AND CONVERT(VARCHAR(20), " . $field . ", 23) BETWEEN '" . $dateStart . "' AND '" . $dateEnd . "'";
                     }else if($dateStart != null){
-                        $whereStatement .= ($whereStatement == "") ? "CONVERT(VARCHAR(20), " . $field . ", 126) = '" . $dateStart . "'" : " AND CONVERT(VARCHAR(20), " . $field . ", 126) = '" . $dateStart . "'";
+                        $whereStatement .= ($whereStatement == "") ? "CONVERT(VARCHAR(20), " . $field . ", 23) = '" . $dateStart . "'" : " AND CONVERT(VARCHAR(20), " . $field . ", 23) = '" . $dateStart . "'";
                     }
                 }
             }
@@ -120,7 +120,7 @@ class DatatablesMSSQL
                 if($method == "LIKE"){
                     $filterStatement .= ($filterStatement == "") ? " " . $field . " LIKE '%" . $value . "%'" : " AND " . $field . " LIKE '%" . $value . "%'";
                 }else if($method == "EQUAL"){
-                    $filterStatement .= ($filterStatement == "") ? " " . $field . " = '" . $value . "%" : " AND " . $field . " = '" . $value . "'";
+                    $filterStatement .= ($filterStatement == "") ? " " . $field . " = '" . $value . "'" : " AND " . $field . " = '" . $value . "'";
                 }else if($method == "DATE"){
                     $date = null;
                     $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
@@ -225,7 +225,7 @@ class DatatablesMSSQL
                 if($method == "LIKE"){
                     $whereStatement .= ($whereStatement == "") ? " " . $field . " LIKE '%" . $value . "%'" : " AND " . $field . " LIKE '%" . $value . "%'";
                 }else if($method == "EQUAL"){
-                    $whereStatement .= ($whereStatement == "") ? " " . $field . " = '" . $value . "%" : " AND " . $field . " = '" . $value . "'";
+                    $whereStatement .= ($whereStatement == "") ? " " . $field . " = '" . $value . "'" : " AND " . $field . " = '" . $value . "'";
                 }else if($method == "DATE"){
                     $date = null;
                     $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
@@ -278,7 +278,7 @@ class DatatablesMSSQL
                 if($method == "LIKE"){
                     $filterStatement .= ($filterStatement == "") ? " " . $field . " LIKE '%" . $value . "%'" : " AND " . $field . " LIKE '%" . $value . "%'";
                 }else if($method == "EQUAL"){
-                    $filterStatement .= ($filterStatement == "") ? " " . $field . " = '" . $value . "%" : " AND " . $field . " = '" . $value . "'";
+                    $filterStatement .= ($filterStatement == "") ? " " . $field . " = '" . $value . "'" : " AND " . $field . " = '" . $value . "'";
                 }else if($method == "DATE"){
                     $date = null;
                     $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
