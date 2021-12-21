@@ -89,7 +89,10 @@ class DatatablesMySQL
                 }else if($method == "DATE_BETWEEN"){
                     $dateStart = null;
                     $dateEnd = null;
-                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
+                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d",
+                        "d-F-Y H:i", "d F Y H:i", "Y m d H:i", "Y-m-d H:i",
+                        "d-F-Y H:i:s", "d F Y H:i:s", "Y m d H:i:s", "Y-m-d H:i:s"
+                    );
 
                     $value = explode(" AND ", $value);
                     $valueStart = $value[0] ?? null;
@@ -97,21 +100,21 @@ class DatatablesMySQL
                     if($valueStart != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateStart == null && \DateTime::createFromFormat($dateFormat, $valueStart) !== FALSE){
-                                $dateStart = date("Y-m-d", strtotime($valueStart));
+                                $dateStart = date("Y-m-d H:i:s", strtotime($valueStart));
                             }
                         }
                     }
                     if($valueEnd != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateEnd == null && \DateTime::createFromFormat($dateFormat, $valueEnd) !== FALSE){
-                                $dateEnd = date("Y-m-d", strtotime($valueEnd));
+                                $dateEnd = date("Y-m-d H:i:s", strtotime($valueEnd));
                             }
                         }
                     }
                     if($dateStart != null && $dateEnd != null){
-                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
+                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
                     }else if($dateStart != null){
-                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'";
+                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'";
                     }
                 }
             }
@@ -142,7 +145,10 @@ class DatatablesMySQL
                 }else if($method == "DATE_BETWEEN"){
                     $dateStart = null;
                     $dateEnd = null;
-                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
+                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d",
+                        "d-F-Y H:i", "d F Y H:i", "Y m d H:i", "Y-m-d H:i",
+                        "d-F-Y H:i:s", "d F Y H:i:s", "Y m d H:i:s", "Y-m-d H:i:s"
+                    );
 
                     $value = explode(" AND ", $value);
                     $valueStart = $value[0] ?? null;
@@ -150,21 +156,21 @@ class DatatablesMySQL
                     if($valueStart != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateStart == null && \DateTime::createFromFormat($dateFormat, $valueStart) !== FALSE){
-                                $dateStart = date("Y-m-d", strtotime($valueStart));
+                                $dateStart = date("Y-m-d H:i:s", strtotime($valueStart));
                             }
                         }
                     }
                     if($valueEnd != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateEnd == null && \DateTime::createFromFormat($dateFormat, $valueEnd) !== FALSE){
-                                $dateEnd = date("Y-m-d", strtotime($valueEnd));
+                                $dateEnd = date("Y-m-d H:i:s", strtotime($valueEnd));
                             }
                         }
                     }
                     if($dateStart != null && $dateEnd != null){
-                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
+                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
                     }else if($dateStart != null){
-                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'";
+                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'";
                     }
                 }
             }
@@ -243,7 +249,10 @@ class DatatablesMySQL
                 }else if($method == "DATE_BETWEEN"){
                     $dateStart = null;
                     $dateEnd = null;
-                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
+                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d",
+                        "d-F-Y H:i", "d F Y H:i", "Y m d H:i", "Y-m-d H:i",
+                        "d-F-Y H:i:s", "d F Y H:i:s", "Y m d H:i:s", "Y-m-d H:i:s"
+                    );
 
                     $value = explode(" AND ", $value);
                     $valueStart = $value[0] ?? null;
@@ -251,21 +260,21 @@ class DatatablesMySQL
                     if($valueStart != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateStart == null && \DateTime::createFromFormat($dateFormat, $valueStart) !== FALSE){
-                                $dateStart = date("Y-m-d", strtotime($valueStart));
+                                $dateStart = date("Y-m-d H:i:s", strtotime($valueStart));
                             }
                         }
                     }
                     if($valueEnd != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateEnd == null && \DateTime::createFromFormat($dateFormat, $valueEnd) !== FALSE){
-                                $dateEnd = date("Y-m-d", strtotime($valueEnd));
+                                $dateEnd = date("Y-m-d H:i:s", strtotime($valueEnd));
                             }
                         }
                     }
                     if($dateStart != null && $dateEnd != null){
-                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
+                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
                     }else if($dateStart != null){
-                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'";
+                        $whereStatement .= ($whereStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'":" AND DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'";
                     }
                 }
             }
@@ -296,7 +305,10 @@ class DatatablesMySQL
                 }else if($method == "DATE_BETWEEN"){
                     $dateStart = null;
                     $dateEnd = null;
-                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d");
+                    $dateFormats = array("d-F-Y", "d F Y", "Y m d", "Y-m-d",
+                        "d-F-Y H:i", "d F Y H:i", "Y m d H:i", "Y-m-d H:i",
+                        "d-F-Y H:i:s", "d F Y H:i:s", "Y m d H:i:s", "Y-m-d H:i:s"
+                    );
 
                     $value = explode(" AND ", $value);
                     $valueStart = $value[0] ?? null;
@@ -304,21 +316,21 @@ class DatatablesMySQL
                     if($valueStart != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateStart == null && \DateTime::createFromFormat($dateFormat, $valueStart) !== FALSE){
-                                $dateStart = date("Y-m-d", strtotime($valueStart));
+                                $dateStart = date("Y-m-d H:i:s", strtotime($valueStart));
                             }
                         }
                     }
                     if($valueEnd != null){
                         foreach($dateFormats as $dateFormat){
                             if($dateEnd == null && \DateTime::createFromFormat($dateFormat, $valueEnd) !== FALSE){
-                                $dateEnd = date("Y-m-d", strtotime($valueEnd));
+                                $dateEnd = date("Y-m-d H:i:s", strtotime($valueEnd));
                             }
                         }
                     }
                     if($dateStart != null && $dateEnd != null){
-                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
+                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') BETWEEN '".$dateStart."' AND '".$dateEnd."'";
                     }else if($dateStart != null){
-                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d') = '".$dateStart."'";
+                        $filterStatement .= ($filterStatement == "")?" DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'":" OR DATE_FORMAT(".$field.", '%Y-%m-%d %H:%i:%s') = '".$dateStart."'";
                     }
                 }
             }
